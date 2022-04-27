@@ -1,3 +1,5 @@
 [[target]]
     name = "nine_lives"
-    assets = []
+    assets = [
+        "images/chrono_soldier1.png"
+    ]
