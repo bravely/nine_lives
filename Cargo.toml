@@ -1,0 +1,37 @@
+[package]
+name = "nine_lives"
+version = "0.1.0"
+edition = "2018"
+
+[package.metadata.cargo-xbuild]
+memcpy = false
+sysroot_path = "target/sysroot"
+panic_immediate_abort = false
+
+[profile.dev]
+panic = "abort"
+opt-level = 'z'
+lto = true
+
+[profile.release]
+panic = "abort"
+opt-level = 'z'
+lto = true
+
+[lib]
+crate-type = ["staticlib", "cdylib"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+crankstart = { path = "../crankstart" }
+crankstart-sys = { path = "../crankstart/crankstart-sys" }
+anyhow = { version = "1.0.31", default-features = false }
+euclid = { version = "0.20.13", default-features = false, features = [ "libm" ] }
+hashbrown = "0.7.2"
+heapless = "0.5.5"
+
+[dependencies.cstr_core]
+version = "=0.1.2"
+default-features = false
+features = [ "alloc" ]
